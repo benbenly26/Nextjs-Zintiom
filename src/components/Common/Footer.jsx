@@ -48,7 +48,7 @@ export default function Footer() {
             sx={{
               display: "flex",
               flexDirection: { xs: "flex", lg: "row" },
-              gap: 2,
+              gap: 1,
               alignItems: "center",
               marginTop: { xs: 2, lg: 0 },
             }}
