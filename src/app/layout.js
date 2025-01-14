@@ -1,13 +1,12 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Layout from "@/components/Layout/Layout";
+import { Toaster } from "sonner";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const mons = Poppins({
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -19,10 +18,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={mons.className}>
+        <div>
+          <Toaster position="top-center" richColors duration={3000} />
+        </div>
+        <AppRouterCacheProvider>
+          <Layout>{children}</Layout>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

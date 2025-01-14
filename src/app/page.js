@@ -1,4 +1,8 @@
+"use client"
+
 import Image from "next/image";
+import { Button } from "react-bootstrap";
+import { toast } from "sonner";
 
 export default function Home() {
   return (
@@ -12,9 +16,16 @@ export default function Home() {
           height={38}
           priority
         />
+        <Button
+          onClick={() => {
+            toast.error("hhj");
+          }}
+        >
+          clcick
+        </Button>
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
-            Get started by editing{" "}
+            Get started by edissting{" "}
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
               src/app/page.js
             </code>
