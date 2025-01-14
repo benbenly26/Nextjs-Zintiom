@@ -93,6 +93,30 @@ export default function Header() {
           </ListItemButton>
         </ListItem>
       </List>
+      <Divider />
+      <Box className='d-flex justify-content-center'>
+        <Button
+          sx={{
+            backgroundColor: "#008080",
+            color: "white",
+            borderRadius: "25px",
+            padding: "10px 20px",
+            fontSize: "14px",
+            fontWeight: "500",
+            textTransform: "none",
+            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+            "&:hover": {
+              backgroundColor: "#006666",
+            },
+            "&:active": {
+              backgroundColor: "#004c4c",
+              transform: "scale(0.98)",
+            },
+          }}
+        >
+          Contact Us
+        </Button>
+      </Box>
     </Box>
   );
 
