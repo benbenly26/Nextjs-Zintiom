@@ -10,19 +10,49 @@ export default function GetInTouch() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (name.length <= 3 && phone.length <= 8 && email.length <= 4) {
-      toast.error("Please fill all the fields.");
+    if (name?.length < 3 || phone?.length < 3 || email?.length < 3 ) {
+      toast.error("Please fill all the fields");
+      return;
     }
-    if (name.length >= 3 || phone.length >= 8 || email.length >= 4) {
-      toast.success("Thanks for your feedback.");
-      setName("");
-      setPhone("");
-      setEmail("");
-      setMessage("");
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    if (!emailRegex.test(email)) {
+      return toast.error("Please Enter the Correct Email");
     }
+    try {
+      let data = {
+        name: name,
+        phone: phone,
+        email: email,
+        message: message,
+      };
+
+      const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      console.log('res', res)
+      const response = await res.json();
+
+      console.log("response", response);
+      if (res.status == 200) {
+        toast.success(response.msg);
+        setName("");
+        setPhone("");
+        setEmail("");
+        setMessage("");
+      } else {
+        toast.error(response.msg);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
   };
 
   return (

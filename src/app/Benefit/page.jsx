@@ -53,7 +53,7 @@ export default function Benefit() {
             >
               <FaCheckCircle
                 style={{
-                  color: "#00000",
+                  color: "#006666",
                   fontSize: "25px",
                 }}
               />

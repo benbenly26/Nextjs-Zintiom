@@ -100,7 +100,7 @@ export default function Service() {
                                     <Avatar
                                         sx={{
                                             margin: "auto",
-                                            backgroundColor: "#000",
+                                            backgroundColor: "#006666",
                                             color: "#fff",
                                             width: "60px",
                                             height: "60px",
