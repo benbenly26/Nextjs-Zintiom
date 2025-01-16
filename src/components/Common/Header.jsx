@@ -21,10 +21,12 @@ import HomeIcon from "@mui/icons-material/Home";
 import QuizIcon from "@mui/icons-material/Quiz";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import InfoIcon from "@mui/icons-material/Info";
+import { useRouter } from "next-nprogress-bar";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
 
+  const r = useRouter()
   const toggleDrawer = (newOpen) => {
     setOpen(newOpen);
   };
@@ -36,7 +38,7 @@ export default function Header() {
       <Divider />
       <List>
         <ListItem>
-          <ListItemButton>
+          <ListItemButton onClick={() => r.push(`?section=Home`)}>
             <ListItemIcon>
               <HomeIcon />
               <Typography className="mx-2">Home</Typography>
@@ -48,7 +50,7 @@ export default function Header() {
       <Divider />
       <List>
         <ListItem>
-          <ListItemButton>
+          <ListItemButton onClick={() => r.push(`?section=Services`)}>
             <ListItemIcon>
               <ManageAccountsIcon />
               <Typography className="mx-2">Services</Typography>
@@ -60,7 +62,7 @@ export default function Header() {
       <Divider />
       <List>
         <ListItem>
-          <ListItemButton>
+          <ListItemButton onClick={() => r.push(`?section=FAQ`)}>
             <ListItemIcon>
               <QuizIcon />
               <Typography className="mx-2">FAQ</Typography>
@@ -72,7 +74,7 @@ export default function Header() {
       <Divider />
       <List>
         <ListItem>
-          <ListItemButton>
+          <ListItemButton onClick={() => r.push(`?section=Blog`)}>
             <ListItemIcon>
               <NewspaperIcon />
               <Typography className="mx-2">Blog</Typography>
@@ -84,7 +86,7 @@ export default function Header() {
       <Divider />
       <List>
         <ListItem>
-          <ListItemButton>
+          <ListItemButton onClick={() => r.push(`?section=AboutUs`)}>
             <ListItemIcon>
               <InfoIcon />
               <Typography className="mx-2">About Us</Typography>
@@ -140,10 +142,10 @@ export default function Header() {
                   xs: "none",
                   sm: "inline",
                   md: "inline",
-                },
+                }, cursor: "pointer"
               }}
             >
-              <Typography sx={{ fontWeight: "600" }}>Home</Typography>
+              <Typography onClick={() => r.push(`?section=Home`)}>Home</Typography>
             </Box>
             <Box
               sx={{
@@ -151,10 +153,10 @@ export default function Header() {
                   xs: "none",
                   sm: "inline",
                   md: "inline",
-                },
+                }, cursor: "pointer"
               }}
             >
-              <Typography>Services</Typography>
+              <Typography onClick={() => r.push(`?section=Services`)}>Services</Typography>
             </Box>
             <Box
               sx={{
@@ -162,10 +164,10 @@ export default function Header() {
                   xs: "none",
                   sm: "inline",
                   md: "inline",
-                },
+                }, cursor: "pointer"
               }}
             >
-              <Typography>FAQ</Typography>
+              <Typography onClick={() => r.push(`?section=FAQ`)}>FAQ</Typography>
             </Box>
             <Box
               sx={{
@@ -173,10 +175,10 @@ export default function Header() {
                   xs: "none",
                   sm: "inline",
                   md: "inline",
-                },
+                }, cursor: "pointer"
               }}
             >
-              <Typography>Blog</Typography>
+              <Typography onClick={() => r.push(`?section=Blog`)}>Blog</Typography>
             </Box>
             <Box
               sx={{
@@ -184,10 +186,10 @@ export default function Header() {
                   xs: "none",
                   sm: "inline",
                   md: "inline",
-                },
+                }, cursor: "pointer"
               }}
             >
-              <Typography>About Us</Typography>
+              <Typography onClick={() => r.push(`?section=AboutUs`)}>About Us</Typography>
             </Box>
           </Box>
         </Box>

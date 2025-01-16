@@ -6,12 +6,31 @@ import { BiSolidQuoteAltRight } from "react-icons/bi";
 import Benefit from "./Benefit/page";
 import Service from "./Service/page";
 import Getintouch from "./Getintouch/page";
+import { createRef, useEffect, useRef, useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
 
 export default function Home() {
+  const [tbValue, setTabValue] = useState("Home");
+  let val = ["Home", "Services", "FAQ", "Blog", "AboutUs"];
+  const ref = useRef(val.map(() => createRef()));
+  const params = useSearchParams();
+  useEffect(() => {
+    val.map(
+      (se, i) =>
+        se == params.get("section") &&
+        ref.current[i].current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "nearest",
+        })
+    );
+  }, [params.get("section")]);
+
   return (
     <>
       {/* section 1 */}
       <Box
+        ref={ref.current[0]}
         sx={{
           width: { lg: "75%", xs: "90%" },
           paddingTop: "4%",
@@ -180,9 +199,13 @@ export default function Home() {
         </Box>
       </Box>
       {/* section 3 */}
-      <Service />
+      <Box ref={ref.current[1]}>
+        <Service />
+      </Box>
       {/* section 4 */}
+
       <Box
+        ref={ref.current[3]}
         sx={{
           width: { lg: "75%", xs: "90%" },
           borderRadius: "10px",
@@ -225,9 +248,13 @@ export default function Home() {
         </Grid>
       </Box>
       {/* section 5 */}
-      <Benefit />
+      <Box ref={ref.current[2]}>
+        <Benefit />
+      </Box>
+
       {/* section 6 */}
       <Box
+        ref={ref.current[3]}
         sx={{
           width: { lg: "75%", xs: "90%" },
           paddingTop: "4%",
@@ -280,7 +307,9 @@ export default function Home() {
         </Button>
       </Box>
       {/* section 7 */}
-      <Getintouch />
+      <Box ref={ref.current[4]}>
+        <Getintouch />
+      </Box>
     </>
   );
 }
