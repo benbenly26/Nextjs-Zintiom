@@ -4,7 +4,6 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "@/components/Layout/Layout";
 import { Toaster } from "sonner";
-// import { AppProgressBar } from "next-nprogress-bar";
 
 const mons = Poppins({
   weight: "400",
@@ -26,7 +25,6 @@ export default function RootLayout({ children }) {
           <Toaster position="top-center" richColors duration={3000} />
         </div>
         <AppRouterCacheProvider>
-         
           <Layout>{children}</Layout>
         </AppRouterCacheProvider>
       </body>
