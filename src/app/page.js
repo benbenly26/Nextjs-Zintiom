@@ -1,19 +1,20 @@
 "use client";
 
+import { createRef, useEffect, useRef } from "react";
 import { Grid, Box, Button, Typography } from "@mui/material";
 import { BiSolidQuoteAltLeft } from "react-icons/bi";
 import { BiSolidQuoteAltRight } from "react-icons/bi";
 import Benefit from "./Benefit/page";
 import Service from "./Service/page";
 import Getintouch from "./Getintouch/page";
-import { createRef, useEffect, useRef, useState } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
-  const [tbValue, setTabValue] = useState("Home");
   let val = ["Home", "Services", "FAQ", "Blog", "AboutUs"];
+
   const ref = useRef(val.map(() => createRef()));
   const params = useSearchParams();
+
   useEffect(() => {
     val.map(
       (se, i) =>
