@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import React, { Suspense } from "react";
 import { Box } from "@mui/material";
 import Header from "../Common/Header";
 import Footer from "../Common/Footer";
@@ -18,7 +18,9 @@ export default function Layout({ children }) {
                 options={{ showSpinner: false }}
                 shallowRouting
             />
-            <Box>{children}</Box>
+            <Suspense>
+                <Box>{children}</Box>
+            </Suspense>
             <Box>
                 <Footer />
             </Box>
