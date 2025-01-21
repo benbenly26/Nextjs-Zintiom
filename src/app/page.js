@@ -1,15 +1,17 @@
 "use client";
 
-import { createRef, useEffect, useRef } from "react";
-import { Grid, Box, Button, Typography } from "@mui/material";
+import { createRef, useEffect, useRef, useState } from "react";
+import { Grid, Box, Button, Typography, IconButton } from "@mui/material";
 import { BiSolidQuoteAltLeft } from "react-icons/bi";
 import { BiSolidQuoteAltRight } from "react-icons/bi";
 import Benefit from "./Benefit/page";
 import Service from "./Service/page";
 import Getintouch from "./Getintouch/page";
 import { useSearchParams } from "next/navigation";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 export default function Home() {
+  const [showScroll, setShowScroll] = useState(false);
   let val = ["Home", "Services", "FAQ", "Blog", "AboutUs"];
 
   const ref = useRef(val.map(() => createRef()));
@@ -26,6 +28,27 @@ export default function Home() {
         })
     );
   }, [params.get("section")]);
+
+  // Handle scrolling behavior
+  const handleScroll = () => {
+    if (window.scrollY > 200) {
+      setShowScroll(true);
+    } else {
+      setShowScroll(false);
+    }
+  };
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -311,6 +334,29 @@ export default function Home() {
       <Box ref={ref.current[4]}>
         <Getintouch />
       </Box>
+      {showScroll && (
+        <IconButton
+          onClick={scrollToTop}
+          sx={{
+            position: "fixed",
+            bottom: "20px",
+            right: "20px",
+            backgroundColor: "#008080",
+            color: "white",
+            borderRadius: "50%",
+            width: "50px",
+            height: "50px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            "&:hover": {
+              backgroundColor: "#006666",
+            },
+          }}
+        >
+          <KeyboardArrowUpIcon />
+        </IconButton>
+      )}
     </>
   );
 }
