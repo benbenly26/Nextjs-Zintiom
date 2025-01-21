@@ -1,7 +1,7 @@
 "use client";
 
 import { createRef, useEffect, useRef, useState } from "react";
-import { Grid, Box, Button, Typography, IconButton } from "@mui/material";
+import { Grid, Box, Button, Typography, IconButton, Tooltip } from "@mui/material";
 import { BiSolidQuoteAltLeft } from "react-icons/bi";
 import { BiSolidQuoteAltRight } from "react-icons/bi";
 import Benefit from "./Benefit/page";
@@ -335,27 +335,29 @@ export default function Home() {
       </Box>
       {/* scroll to top */}
       {showScroll && (
-        <IconButton
-          onClick={scrollToTop}
-          sx={{
-            position: "fixed",
-            bottom: "20px",
-            right: "20px",
-            backgroundColor: "#008080",
-            color: "white",
-            borderRadius: "50%",
-            width: "50px",
-            height: "50px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            "&:hover": {
-              backgroundColor: "#006666",
-            },
-          }}
-        >
-          <KeyboardArrowUpIcon />
-        </IconButton>
+        <Tooltip title="Scroll to top" placement="left">
+          <IconButton
+            onClick={scrollToTop}
+            sx={{
+              position: "fixed",
+              bottom: "20px",
+              right: "20px",
+              backgroundColor: "#008080",
+              color: "white",
+              borderRadius: "50%",
+              width: "50px",
+              height: "50px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              "&:hover": {
+                backgroundColor: "#006666",
+              },
+            }}
+          >
+            <KeyboardArrowUpIcon />
+          </IconButton>
+        </Tooltip>
       )}
     </>
   );
