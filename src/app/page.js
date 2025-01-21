@@ -275,7 +275,6 @@ export default function Home() {
       <Box ref={ref.current[2]}>
         <Benefit />
       </Box>
-
       {/* section 6 */}
       <Box
         ref={ref.current[3]}
@@ -334,6 +333,7 @@ export default function Home() {
       <Box ref={ref.current[4]}>
         <Getintouch />
       </Box>
+      {/* scroll to top */}
       {showScroll && (
         <IconButton
           onClick={scrollToTop}
